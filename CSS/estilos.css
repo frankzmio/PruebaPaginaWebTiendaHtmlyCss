@@ -6,7 +6,7 @@ html{
 	box-sizing: inherit;
 }
 
-body{ont-family: Arial, Helvetica, sans-s
+body{font-family: Arial, Helvetica, sans-s
 	ferif;
 	font-size: 1.6rem; /*==16px;*/
 	line-height: 2;
@@ -21,6 +21,7 @@ max-width: 100%;
 
 /*Globales */
 .contenedor{
+	width: 95%;
 	max-width: 120rem; /*= 1200px;*/
 	margin-left: auto;
 	margin-right: auto;
@@ -74,8 +75,18 @@ padding: 1rem 4rem;
 margin-top: 3rem;
 display: inline-block;
 text-align: center;
+display: block;
+flex:0 0 100%;
 
 }
+
+@media(min-width: 768px){
+	.boton{
+		display: inline-block;
+		flex:0 0 auto;
+	}
+}
+
 .boton-amarillo{
 background-color: #E08709;
 }
@@ -106,7 +117,12 @@ height: 100%;
 display: flex;
 flex-direction: column;
 justify-content: space-between; /* al usar flex las posiciones se invierten quiere decir que justify-content (horizantalmente) ahora sera vertical*/
-
+text-align: center;
+}
+@media(min-width: 768px){
+	.contenido-header{
+		text-align: left;
+	}
 }
 .contenido-header h1{
 	color: white;
@@ -115,16 +131,20 @@ justify-content: space-between; /* al usar flex las posiciones se invierten quie
 	padding-bottom: 1rem;
 }
 
-
-
-
 .barra{
-	display: flex;
-	justify-content: space-between; /* alinear horizontamente */
-	align-items: center; /* alinear verticamente */ 
 	padding-top: 30px; /* espacio hacia adentro del elemeto */
 
 }
+
+@media(min-width: 768px){
+	.barra{
+			display: flex;
+			justify-content: space-between; /* alinear horizontamente */
+			align-items: center; /* alinear verticamente */ 
+			
+		}
+	}
+
 .barra-inicio{
 	color: #fff;
 	text-decoration: none;
@@ -156,18 +176,21 @@ margin: 0;
 
 /** encabezado-Nosotros **/
 
-
-
-
-.iconos-nosotros{
-	display: flex;
-	justify-content: space-between;
+@media(min-width: 768px){
+	.iconos-nosotros{
+		display: flex;
+		justify-content: space-between;
+	}
 }
 
 .incono-nostros-contenido{
-	flex-basis: calc(33.3% - 1rem); /*33.3% menos 1rem que equivale a 10px para futuro cuando sea responsive*/
 	text-align: center;
-
+}
+@media(min-width: 768px){
+	.incono-nostros-contenido{
+		flex-basis: calc(33.3% - 1rem); /*33.3% menos 1rem que equivale a 10px para futuro cuando sea responsive*/
+		
+		}
 }
 .incono-nostros-contenido{
 	text-transform: uppercase; /* convierte la letra en mayuscula*/
@@ -176,15 +199,15 @@ margin: 0;
 
 /** ANUNCIOS */
 
-.contenedor-anuncios{
+
+@media(min-width: 768px){
+	.contenedor-anuncios{
 	display: flex;
  justify-content: space-between;
 flex-wrap: wrap;
 }
-
+}
 .anuncio{
-	flex-shrink: 0;
-	flex-basis: calc(33.3% - 1rem); /* separa en 3 columnas el contenido del anuncio*/
 	border-style: solid;
 	border-color: #B5B5B5;
 	border-width: 3px;
@@ -192,6 +215,11 @@ flex-wrap: wrap;
 	border: 1px solid #B5B5B5 ; */
 	background-color: #F5F5F5;
 	margin-bottom: 2rem;
+}
+@media(min-width: 768px){
+	.anuncio{
+		flex-basis: calc(33.3% - 1rem); /* separa en 3 columnas el contenido del anuncio*/
+	}
 }
 
 
@@ -238,7 +266,7 @@ flex-wrap: wrap;
 }
 
 .contenido-contacto{
-	flex:1; /*detecta cuantos elementos hay y asigna una division entre el tamaño y el elemeto*/
+	flex:0 0 95%; /*detecta cuantos elementos hay y asigna una division entre el tamaño y el elemeto*/
 	color: white;
 }
 .contenido-contacto p{
@@ -246,33 +274,46 @@ flex-wrap: wrap;
 }
 
 /** seccion inferior **/
-.seccion-inferior{
+@media(min-width: 768px){
+
+	.seccion-inferior{
 	display: flex;
 	justify-content: space-between;
+	}
+	.seccion-inferior .blog{
+	flex-basis: 100%; /*=width 100%*/
+	}
+	.seccion-inferior .testimoniales{
+	flex-basis: calc(30%-3rem);
+	}
 }
-.seccion-inferior .blog{
-flex-basis: 100%; /*=width 100%*/
-}
-.seccion-inferior .testimoniales{
-flex-basis: calc(30%-3rem);
-}
+
+
 .blog{
 	margin-right: 6rem;
 
 }
 .entrada-blog{
+	
+	margin-bottom: 2rem; 
+}
+
+@media(min-width: 768px){
+	.entrada-blog{ 
 	display: flex;
 	justify-content: space-between;
-	margin-bottom: 2rem; 
+	}
 }
 .entrada-blog:last-of-type{
 margin-bottom: 0;
 }
-.entrada-blog .imagen{
-	flex-basis: 40%;
-}
-.entrada-blog .texto-entrada{
-	flex-basis: calc(60%-2rem);
+@media(min-width: 768px){
+		.entrada-blog .imagen{
+			flex-basis: 40%;
+		}
+		.entrada-blog .texto-entrada{
+			flex-basis: calc(60% - 2rem);
+		}
 }
 .texto-entrada{
 margin-left: 2.5rem;
@@ -334,17 +375,29 @@ left: -50px; /*posiciona px para atras */
 }
 .contenedor-footer{
 	padding: 3rem 0;
-	display: flex;
-	justify-content: space-between;
+	text-align: center;
 
 }
+@media(min-width: 768px){
+	.contenedor-footer{
+		display: flex;
+		justify-content: space-between;
+
+	}
+}
+
 
 /** INTERNAS **/
 /** NOSOTROS **/
 .contenido-nosotros{
-	display: grid;
-	grid-template-columns: repeat(2, 50%); /*o tambien 1fr 1fr*/
+	
 	grid-column-gap: 2rem;
+}
+@media(min-width: 768px){
+	.contenido-nosotros{
+		display: grid;
+		grid-template-columns: repeat(2, 50%); /*o tambien 1fr 1fr*/
+	}
 }
 .texto-nosotros blockquote{
 font-size: 2rem;
